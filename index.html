@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yaziel Venta de Hellcat | Concesionario Exclusivo SRT</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Orbitron & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    <!-- Tone.js for Engine Audio Simulation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        srtRed: '#ff1e27',
+                        srtRedDark: '#cc0008',
+                        srtDark: '#0a0a0c',
+                        srtCard: '#141418',
+                        srtGray: '#22222a',
+                        srtBorder: '#2e2e38',
+                        srtGold: '#f59e0b'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styling for automotive carbon texture & glow effects */
+        body {
+            background-color: #0a0a0c;
+            color: #f3f4f6;
+            background-image: radial-gradient(circle at 50% 0%, rgba(255, 30, 39, 0.12), transparent 70%);
+        }
+        .carbon-pattern {
+            background-color: #111115;
+            background-image: linear-gradient(45deg, #16161c 25%, transparent 25%), 
+                              linear-gradient(-45deg, #16161c 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #16161c 75%), 
+                              linear-gradient(-45deg, transparent 75%, #16161c 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        }
+        .glow-red {
+            box-shadow: 0 0 25px rgba(255, 30, 39, 0.35);
+        }
+        .glow-red-lg {
+            box-shadow: 0 0 50px rgba(255, 30, 39, 0.5);
+        }
+        .text-glow {
+            text-shadow: 0 0 12px rgba(255, 30, 39, 0.6);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ff1e27;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #cc0008;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-srtRed selection:text-white">
+
+    <!-- TOP HEADER BAR -->
+    <div class="bg-black/80 border-b border-srtBorder text-xs py-2 px-4 text-gray-400">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span><i class="fa-solid fa-location-dot text-srtRed mr-2"></i>Av. Pista de Carreras #807, San Juan / HQ Hellcat</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-phone text-srtRed mr-2"></i>(787) 807-HELL (4355)</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="text-srtGold font-semibold"><i class="fa-solid fa-fire mr-1"></i> Envío VIP Nacional Disponible</span>
+                <div class="flex space-x-3 text-gray-400">
+                    <a href="#" class="hover:text-srtRed transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-srtRed transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-srtRed transition"><i class="fa-brands fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <nav class="sticky top-0 z-40 bg-srtDark/90 backdrop-blur-md border-b border-srtBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Branding Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 bg-gradient-to-br from-srtRed to-black rounded-lg flex items-center justify-center border border-srtRed/50 group-hover:scale-105 transition duration-300 shadow-lg shadow-srtRed/20">
+                        <i class="fa-solid fa-cat text-2xl text-white transform -rotate-12"></i>
+                    </div>
+                    <div>
+                        <span class="font-display text-xl font-black tracking-wider text-white block leading-none">
+                            YAZIEL <span class="text-srtRed">HELLCAT</span>
+                        </span>
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-widest block mt-1">
+                            Venta Exclusiva SRT Supercharged
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-semibold uppercase tracking-wider">
+                    <a href="#inventario" class="text-gray-300 hover:text-srtRed transition py-1 border-b-2 border-transparent hover:border-srtRed">Inventario</a>
+                    <a href="#modelos" class="text-gray-300 hover:text-srtRed transition py-1 border-b-2 border-transparent hover:border-srtRed">Especificaciones</a>
+                    <a href="#calculadora" class="text-gray-300 hover:text-srtRed transition py-1 border-b-2 border-transparent hover:border-srtRed">Financiamiento</a>
+                    <a href="#comparador" class="text-gray-300 hover:text-srtRed transition py-1 border-b-2 border-transparent hover:border-srtRed">Comparador</a>
+                    <a href="#contacto" class="text-gray-300 hover:text-srtRed transition py-1 border-b-2 border-transparent hover:border-srtRed">Contacto</a>
+                </div>
+
+                <!-- Call To Action Button -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button onclick="openBookingModal('General')" class="bg-gradient-to-r from-srtRed to-srtRedDark text-white font-bold px-5 py-2.5 rounded-lg border border-red-500/30 hover:brightness-110 transition shadow-lg shadow-srtRed/30 flex items-center space-x-2">
+                        <i class="fa-solid fa-key"></i>
+                        <span>Reservar Cita</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-srtCard border-b border-srtBorder px-4 pt-2 pb-6 space-y-3">
+            <a href="#inventario" class="block text-gray-300 hover:text-srtRed py-2 border-b border-srtBorder/50">Inventario</a>
+            <a href="#modelos" class="block text-gray-300 hover:text-srtRed py-2 border-b border-srtBorder/50">Especificaciones</a>
+            <a href="#calculadora" class="block text-gray-300 hover:text-srtRed py-2 border-b border-srtBorder/50">Calculadora de Financiamiento</a>
+            <a href="#comparador" class="block text-gray-300 hover:text-srtRed py-2 border-b border-srtBorder/50">Comparador SRT</a>
+            <a href="#contacto" class="block text-gray-300 hover:text-srtRed py-2">Contacto</a>
+            <button onclick="openBookingModal('General')" class="w-full mt-4 bg-srtRed text-white font-bold py-3 rounded-lg flex items-center justify-center space-x-2">
+                <i class="fa-solid fa-key"></i>
+                <span>Reservar Cita</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden carbon-pattern border-b border-srtBorder">
+        <!-- Hero Background Image Overlay -->
+        <div class="absolute inset-0 bg-cover bg-center opacity-40 transform scale-105 transition duration-1000" 
+             style="background-image: url('https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1920&q=80');">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-srtDark via-srtDark/70 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-srtDark via-transparent to-srtDark"></div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-srtRed/20 border border-srtRed/50 rounded-full px-4 py-1.5 text-srtRed text-xs font-bold uppercase tracking-widest">
+                        <i class="fa-solid fa-bolt animate-pulse"></i>
+                        <span>El Máximo Dominio en la Carretera</span>
+                    </div>
+
+                    <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-black text-white leading-tight uppercase">
+                        Siente los <span class="text-transparent bg-clip-text bg-gradient-to-r from-srtRed via-red-500 to-amber-500 text-glow">807+ HP</span><br>
+                        Poder Puro SRT
+                    </h1>
+
+                    <p class="text-gray-300 text-base sm:text-lg max-w-2xl font-light">
+                        Bienvenido a <strong class="text-white font-semibold">Yaziel Venta de Hellcat</strong>. La boutique automotriz líder especializada en la venta, importación y configuración de la legendaria línea Dodge Challenger, Charger y Durango SRT Hellcat.
+                    </p>
+
+                    <!-- Interactive Rev Engine Button -->
+                    <div class="p-4 bg-srtCard/80 backdrop-blur border border-srtBorder rounded-xl max-w-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-full bg-srtRed/20 text-srtRed flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-volume-high text-lg"></i>
+                            </div>
+                            <div class="text-left">
+                                <div class="text-xs text-gray-400 font-bold uppercase">Simulador de Escape V8</div>
+                                <div class="text-sm text-white font-semibold">Escucha el Supercargador HEMI</div>
+                            </div>
+                        </div>
+                        <button id="revEngineBtn" class="w-full sm:w-auto bg-srtGray hover:bg-srtRed hover:text-white text-gray-200 border border-srtBorder px-4 py-2 rounded-lg font-bold text-xs uppercase tracking-wider transition flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-gauge-high"></i>
+                            <span>Acelerar Motor</span>
+                        </button>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4 pt-2 justify-center lg:justify-start">
+                        <a href="#inventario" class="w-full sm:w-auto bg-srtRed hover:bg-srtRedDark text-white font-extrabold px-8 py-4 rounded-xl text-center shadow-lg shadow-srtRed/40 transition transform hover:-translate-y-0.5 uppercase tracking-wider text-sm flex items-center justify-center space-x-2">
+                            <span>Explorar Inventario</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <button onclick="openBookingModal('Prueba de Manejo')" class="w-full sm:w-auto bg-transparent border-2 border-gray-600 hover:border-white text-white font-bold px-8 py-4 rounded-xl text-center transition hover:bg-white/5 uppercase tracking-wider text-sm flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-flag-checkered text-srtRed"></i>
+                            <span>Prueba de Manejo</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Stats Floating Card Grid -->
+                <div class="lg:col-span-5 grid grid-cols-2 gap-4">
+                    <div class="bg-srtCard/80 backdrop-blur border border-srtBorder p-6 rounded-2xl hover:border-srtRed/50 transition">
+                        <div class="text-srtRed font-display text-3xl sm:text-4xl font-black">807 <span class="text-sm font-normal text-gray-400">HP</span></div>
+                        <div class="text-gray-400 text-xs font-bold uppercase mt-1">Potencia Máxima</div>
+                        <div class="text-xs text-gray-500 mt-2">Motor 6.2L Supercharged HEMI V8</div>
+                    </div>
+
+                    <div class="bg-srtCard/80 backdrop-blur border border-srtBorder p-6 rounded-2xl hover:border-srtRed/50 transition">
+                        <div class="text-white font-display text-3xl sm:text-4xl font-black">3.2s</div>
+                        <div class="text-gray-400 text-xs font-bold uppercase mt-1">0 a 60 mph</div>
+                        <div class="text-xs text-gray-500 mt-2">Aceleración Brutal Redeye</div>
+                    </div>
+
+                    <div class="bg-srtCard/80 backdrop-blur border border-srtBorder p-6 rounded-2xl hover:border-srtRed/50 transition">
+                        <div class="text-srtGold font-display text-3xl sm:text-4xl font-black">707 <span class="text-sm font-normal text-gray-400">lb-ft</span></div>
+                        <div class="text-gray-400 text-xs font-bold uppercase mt-1">Torque de Salida</div>
+                        <div class="text-xs text-gray-500 mt-2">Transmisión TorqueFlite 8HP90</div>
+                    </div>
+
+                    <div class="bg-srtCard/80 backdrop-blur border border-srtBorder p-6 rounded-2xl hover:border-srtRed/50 transition">
+                        <div class="text-white font-display text-3xl sm:text-4xl font-black">203 <span class="text-sm font-normal text-gray-400">mph</span></div>
+                        <div class="text-gray-400 text-xs font-bold uppercase mt-1">Velocidad Máxima</div>
+                        <div class="text-xs text-gray-500 mt-2">Frenos Brembo® de 6 Pistones</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INVENTORY SECTION -->
+    <section id="inventario" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+            <div>
+                <span class="text-srtRed font-bold text-xs uppercase tracking-widest block">Modelos Disponibles en Showroom</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-black text-white mt-1">INVENTARIO HELLCAT</h2>
+            </div>
+            <p class="text-gray-400 text-sm max-w-md mt-4 md:mt-0">
+                Todos nuestros vehículos incluyen certificación técnica de 150 puntos, historial de servicio verificado y garantía extendida Yaziel SRT.
+            </p>
+        </div>
+
+        <!-- FILTER BAR -->
+        <div class="bg-srtCard border border-srtBorder p-4 rounded-2xl mb-10 shadow-xl">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Search Input -->
+                <div>
+                    <label class="text-xs font-bold uppercase text-gray-400 block mb-1">Buscar Modelo</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-gray-500"></i>
+                        <input type="text" id="searchInput" placeholder="Ej: Redeye, Widebody..." 
+                               class="w-full bg-srtDark border border-srtBorder rounded-lg pl-9 pr-3 py-2 text-sm text-white focus:outline-none focus:border-srtRed transition">
+                    </div>
+                </div>
+
+                <!-- Model Filter -->
+                <div>
+                    <label class="text-xs font-bold uppercase text-gray-400 block mb-1">Categoría</label>
+                    <select id="modelFilter" class="w-full bg-srtDark border border-srtBorder rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-srtRed transition">
+                        <option value="ALL">Todos los Modelos</option>
+                        <option value="Challenger">Dodge Challenger</option>
+                        <option value="Charger">Dodge Charger</option>
+                        <option value="Durango">Dodge Durango</option>
+                        <option value="Jailbreak">Edición Jailbreak / Redeye</option>
+                    </select>
+                </div>
+
+                <!-- Max Price Filter -->
+                <div>
+                    <label class="text-xs font-bold uppercase text-gray-400 block mb-1">Precio Máximo ($)</label>
+                    <select id="priceFilter" class="w-full bg-srtDark border border-srtBorder rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-srtRed transition">
+                        <option value="ALL">Sin Límite</option>
+                        <option value="85000">Hasta $85,000</option>
+                        <option value="100000">Hasta $100,000</option>
+                        <option value="120000">Hasta $120,000</option>
+                    </select>
+                </div>
+
+                <!-- Reset Button -->
+                <div class="flex items-end">
+                    <button id="resetFiltersBtn" class="w-full bg-srtGray hover:bg-srtBorder text-gray-300 font-bold py-2 rounded-lg text-sm transition flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        <span>Reiniciar Filtros</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARS GRID -->
+        <div id="carsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic Injection via JavaScript -->
+        </div>
+    </section>
+
+    <!-- TECHNICAL SPECS & HIGHLIGHTS -->
+    <section id="modelos" class="py-20 bg-srtCard border-y border-srtBorder relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-srtRed font-bold text-xs uppercase tracking-widest">Ingeniería sin Límites</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-black text-white mt-1">ANATOMÍA DEL PODER SRT</h2>
+                <p class="text-gray-400 mt-4 text-sm">
+                    Los vehículos Hellcat están diseñados para dominar tanto en la pista de ¼ de milla como en la autopista. Conoce los pilares mecánicos que hacen posible la leyenda.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Highlight 1 -->
+                <div class="bg-srtDark p-8 rounded-2xl border border-srtBorder hover:border-srtRed/50 transition group">
+                    <div class="w-14 h-14 bg-srtRed/10 border border-srtRed/30 rounded-xl flex items-center justify-center text-srtRed text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-engine"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">Motor 6.2L Supercharged HEMI</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Equipado con un supercargador de 2.7 litros capaz de empujar hasta 14.5 psi de presión de aire, generando un rugido insuperable y una aceleración instantánea.
+                    </p>
+                </div>
+
+                <!-- Highlight 2 -->
+                <div class="bg-srtDark p-8 rounded-2xl border border-srtBorder hover:border-srtRed/50 transition group">
+                    <div class="w-14 h-14 bg-srtRed/10 border border-srtRed/30 rounded-xl flex items-center justify-center text-srtRed text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">Frenos Brembo® Performance</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Sistema de frenado de alto rendimiento con pinzas de aluminio de 6 pistones en la parte delantera y discos ranurados de 15.7 pulgadas para una desaceleración precisa.
+                    </p>
+                </div>
+
+                <!-- Highlight 3 -->
+                <div class="bg-srtDark p-8 rounded-2xl border border-srtBorder hover:border-srtRed/50 transition group">
+                    <div class="w-14 h-14 bg-srtRed/10 border border-srtRed/30 rounded-xl flex items-center justify-center text-srtRed text-2xl mb-6 group-hover:scale-110 transition">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3 class="font-display text-xl font-bold text-white mb-3">SRT Drive Modes & Launch Control</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Personaliza la respuesta de la transmisión, la dirección y la suspensión Bilstein® adaptativa, con funciones avanzadas como Line Lock y Chiller Intercooler.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATOR SECTION -->
+    <section id="calculadora" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-srtRed font-bold text-xs uppercase tracking-widest">Financiamiento Transparente</span>
+                <h2 class="font-display text-3xl sm:text-4xl font-black text-white">CALCULADORA DE CUOTAS HELLCAT</h2>
+                <p class="text-gray-400 text-sm">
+                    Calcula tu pago mensual estimado en tiempo real. Trabajamos con los bancos e instituciones financieras más competitivas para asegurarte la mejor tasa del mercado.
+                </p>
+
+                <div class="p-4 bg-srtCard border border-srtBorder rounded-xl space-y-3">
+                    <div class="flex items-center space-x-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-circle-check text-srtRed"></i>
+                        <span>Aprobaciones rápidas en menos de 24 horas</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-circle-check text-srtRed"></i>
+                        <span>Aceptamos tu auto actual en Trade-In al mejor valor</span>
+                    </div>
+                    <div class="flex items-center space-x-3 text-sm text-gray-300">
+                        <i class="fa-solid fa-circle-check text-srtRed"></i>
+                        <span>Plazos flexibles de hasta 72 meses</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculator Form Box -->
+            <div class="lg:col-span-7 bg-srtCard border border-srtBorder p-6 sm:p-8 rounded-2xl shadow-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    
+                    <!-- Vehicle Price Input -->
+                    <div>
+                        <label class="text-xs font-bold uppercase text-gray-300 block mb-2">Precio del Vehículo ($)</label>
+                        <input type="number" id="calcPrice" value="95000" step="1000" 
+                               class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-white font-bold text-lg focus:outline-none focus:border-srtRed">
+                    </div>
+
+                    <!-- Down Payment / Enganche -->
+                    <div>
+                        <label class="text-xs font-bold uppercase text-gray-300 block mb-2">Pronto / Enganche ($)</label>
+                        <input type="number" id="calcDown" value="15000" step="500" 
+                               class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-white font-bold text-lg focus:outline-none focus:border-srtRed">
+                    </div>
+
+                    <!-- Term (Meses) -->
+                    <div>
+                        <label class="text-xs font-bold uppercase text-gray-300 block mb-2">Plazo del Financiamiento</label>
+                        <select id="calcTerm" class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-white font-bold focus:outline-none focus:border-srtRed">
+                            <option value="36">36 Meses (3 Años)</option>
+                            <option value="48">48 Meses (4 Años)</option>
+                            <option value="60" selected>60 Meses (5 Años)</option>
+                            <option value="72">72 Meses (6 Años)</option>
+                        </select>
+                    </div>
+
+                    <!-- Interest Rate (APR %) -->
+                    <div>
+                        <label class="text-xs font-bold uppercase text-gray-300 block mb-2">Tasa de Interés Estimada (APR %)</label>
+                        <input type="number" id="calcRate" value="6.5" step="0.1" 
+                               class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-white font-bold text-lg focus:outline-none focus:border-srtRed">
+                    </div>
+
+                </div>
+
+                <!-- Monthly Output Box -->
+                <div class="mt-8 bg-gradient-to-r from-srtDark to-black border border-srtRed/40 p-6 rounded-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs text-gray-400 font-bold uppercase block">Pago Mensual Estimado</span>
+                        <div id="calcMonthlyOutput" class="font-display text-4xl font-black text-srtRed mt-1">$1,565</div>
+                        <span class="text-[11px] text-gray-500">Monto total financiado: <span id="calcFinancedOutput">$80,000</span></span>
+                    </div>
+
+                    <button onclick="applyFinancingWithCalc()" class="w-full sm:w-auto bg-srtRed hover:bg-srtRedDark text-white font-bold px-6 py-3 rounded-lg text-sm transition uppercase tracking-wider shadow-lg shadow-srtRed/30">
+                        Solicitar Este Plan
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MODEL COMPARISON TOOL -->
+    <section id="comparador" class="py-20 bg-srtCard border-t border-srtBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-srtRed font-bold text-xs uppercase tracking-widest">Herramienta Interactiva</span>
+                <h2 class="font-display text-3xl sm:text-5xl font-black text-white mt-1">COMPARADOR HELLCAT</h2>
+                <p class="text-gray-400 text-sm mt-2">
+                    Selecciona dos leyendas SRT y compara sus especificaciones clave lado a lado para tomar la decisión correcta.
+                </p>
+            </div>
+
+            <!-- Comparison Selectors -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-srtDark p-4 rounded-xl border border-srtBorder">
+                    <label class="text-xs font-bold text-srtRed uppercase block mb-2">Vehículo 1</label>
+                    <select id="compVehicle1" class="w-full bg-srtCard border border-srtBorder rounded-lg p-3 text-white font-bold focus:outline-none focus:border-srtRed">
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+
+                <div class="bg-srtDark p-4 rounded-xl border border-srtBorder">
+                    <label class="text-xs font-bold text-srtRed uppercase block mb-2">Vehículo 2</label>
+                    <select id="compVehicle2" class="w-full bg-srtCard border border-srtBorder rounded-lg p-3 text-white font-bold focus:outline-none focus:border-srtRed">
+                        <!-- Populated by JS -->
+                    </select>
+                </div>
+            </div>
+
+            <!-- Side by Side Display Container -->
+            <div id="comparisonContainer" class="bg-srtDark border border-srtBorder rounded-2xl overflow-x-auto">
+                <!-- Dynamic Injection via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT & TEST DRIVE FORM -->
+    <section id="contacto" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-br from-srtCard via-srtDark to-black border border-srtBorder rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-srtRed/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Left Info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-srtRed font-bold text-xs uppercase tracking-widest">Atención Personalizada</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-black text-white">¿LISTO PARA EL PODER?</h2>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Ponte en contacto con Yaziel y nuestro equipo VIP de especialistas SRT. Agenda una prueba de manejo o solicita una cotización personalizada sin compromiso.
+                    </p>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-lg bg-srtRed/20 text-srtRed flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-sm font-bold">Ubicación del Dealer</h4>
+                                <p class="text-gray-400 text-xs">Av. Pista de Carreras #807, San Juan, Puerto Rico</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-lg bg-srtRed/20 text-srtRed flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-sm font-bold">Correo Electrónico Directo</h4>
+                                <p class="text-gray-400 text-xs">ventas@yazielhellcat.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 rounded-lg bg-srtRed/20 text-srtRed flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white text-sm font-bold">Horario de Atención</h4>
+                                <p class="text-gray-400 text-xs">Lunes a Sábado: 9:00 AM - 7:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Lead Form -->
+                <div class="lg:col-span-7">
+                    <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-xs font-bold uppercase text-gray-300 block mb-1">Nombre Completo *</label>
+                                <input type="text" required placeholder="Ej: Carlos Ramírez" 
+                                       class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-sm text-white focus:outline-none focus:border-srtRed">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold uppercase text-gray-300 block mb-1">Teléfono *</label>
+                                <input type="tel" required placeholder="(787) 000-0000" 
+                                       class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-sm text-white focus:outline-none focus:border-srtRed">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="text-xs font-bold uppercase text-gray-300 block mb-1">Correo Electrónico *</label>
+                                <input type="email" required placeholder="carlos@ejemplo.com" 
+                                       class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-sm text-white focus:outline-none focus:border-srtRed">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold uppercase text-gray-300 block mb-1">Modelo de Interés</label>
+                                <select id="contactModelSelect" class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-sm text-white focus:outline-none focus:border-srtRed">
+                                    <option value="Challenger SRT Hellcat Redeye">Challenger SRT Hellcat Redeye</option>
+                                    <option value="Charger SRT Hellcat Widebody">Charger SRT Hellcat Widebody</option>
+                                    <option value="Durango SRT Hellcat Premium">Durango SRT Hellcat Premium</option>
+                                    <option value="Challenger Jailbreak Special Edition">Challenger Jailbreak Special Edition</option>
+                                    <option value="Otro / Consulta General">Otro / Consulta General</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="text-xs font-bold uppercase text-gray-300 block mb-1">Mensaje o Notas Especiales</label>
+                            <textarea rows="3" placeholder="¿Deseas fecha específica para prueba de manejo o tienes un auto para trade-in?" 
+                                      class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-sm text-white focus:outline-none focus:border-srtRed"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-gradient-to-r from-srtRed to-srtRedDark text-white font-extrabold py-4 rounded-xl transition shadow-lg shadow-srtRed/40 hover:brightness-110 uppercase tracking-wider text-sm flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Enviar Solicitud VIP</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-srtBorder py-12 text-gray-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-srtRed rounded flex items-center justify-center text-white font-black text-sm">Y</div>
+                <span class="font-display font-bold text-white uppercase tracking-wider">Yaziel Venta de Hellcat</span>
+            </div>
+
+            <div class="text-center md:text-left text-xs">
+                &copy; 2026 Yaziel Venta de Hellcat. Todos los derechos reservados. Exclusivo para entusiastas de alto rendimiento SRT.
+            </div>
+
+            <div class="flex space-x-6 text-xs">
+                <a href="#" class="hover:text-srtRed transition">Privacidad</a>
+                <a href="#" class="hover:text-srtRed transition">Términos del Servicio</a>
+                <a href="#" class="hover:text-srtRed transition">Garantía SRT</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- VEHICLE DETAILS MODAL -->
+    <div id="detailsModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-srtCard border border-srtBorder rounded-2xl max-w-4xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeDetailsModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div id="modalContent">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- BOOKING / TEST DRIVE MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="bg-srtCard border border-srtBorder rounded-2xl max-w-lg w-full p-6 sm:p-8 relative">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl p-2">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 bg-srtRed/20 text-srtRed rounded-full flex items-center justify-center text-xl mx-auto mb-2">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <h3 class="font-display text-2xl font-black text-white">AGENDAR PRUEBA DE MANEJO</h3>
+                <p id="bookingSubtext" class="text-gray-400 text-xs mt-1">Reserva tu espacio exclusivo con Yaziel Hellcat</p>
+            </div>
+
+            <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="text-xs font-bold uppercase text-gray-300 block mb-1">Nombre Completo</label>
+                    <input type="text" required class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-sm text-white focus:outline-none focus:border-srtRed">
+                </div>
+                <div>
+                    <label class="text-xs font-bold uppercase text-gray-300 block mb-1">Teléfono Móvil</label>
+                    <input type="tel" required class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-sm text-white focus:outline-none focus:border-srtRed">
+                </div>
+                <div>
+                    <label class="text-xs font-bold uppercase text-gray-300 block mb-1">Fecha Preferida</label>
+                    <input type="date" required class="w-full bg-srtDark border border-srtBorder rounded-lg p-3 text-sm text-white focus:outline-none focus:border-srtRed">
+                </div>
+                <button type="submit" class="w-full bg-srtRed hover:bg-srtRedDark text-white font-extrabold py-3.5 rounded-xl transition shadow-lg shadow-srtRed/40 text-sm uppercase">
+                    Confirmar Cita VIP
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-srtRed text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-3 border border-red-400/30">
+        <i class="fa-solid fa-circle-check text-xl"></i>
+        <span id="toastMsg" class="font-bold text-sm">Operación completada con éxito.</span>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // VEHICLE INVENTORY DATA
+        const inventoryData = [
+            {
+                id: "hellcat-01",
+                name: "Dodge Challenger SRT Hellcat Redeye",
+                category: "Challenger",
+                year: 2023,
+                price: 98500,
+                badge: "Edición Especial",
+                badgeColor: "bg-amber-500",
+                hp: 807,
+                torque: "707 lb-ft",
+                zeroToSixty: "3.2s",
+                topSpeed: "203 mph",
+                mileage: "1,200 mi",
+                color: "Pitch Black",
+                hexColor: "#111111",
+                image: "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80"
+                ],
+                desc: "Equipado con el icónico motor HEMI V8 Supercharged de 6.2L y paquete Redeye Widebody. Sistema de escape con válvula activa y frenos Brembo® de 6 pistones."
+            },
+            {
+                id: "hellcat-02",
+                name: "Dodge Charger SRT Hellcat Widebody",
+                category: "Charger",
+                year: 2023,
+                price: 92000,
+                badge: "Certificado",
+                badgeColor: "bg-blue-600",
+                hp: 717,
+                torque: "650 lb-ft",
+                zeroToSixty: "3.6s",
+                topSpeed: "196 mph",
+                mileage: "3,500 mi",
+                color: "TorRed",
+                hexColor: "#d61c1c",
+                image: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80",
+                    "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=800&q=80"
+                ],
+                desc: "El sedán de producción más rápido y potente del mundo. Espacio para 5 pasajeros sin comprometer un solo caballo de fuerza."
+            },
+            {
+                id: "hellcat-03",
+                name: "Dodge Durango SRT Hellcat Premium",
+                category: "Durango",
+                year: 2024,
+                price: 112000,
+                badge: "Nuevo 2024",
+                badgeColor: "bg-srtRed",
+                hp: 710,
+                torque: "645 lb-ft",
+                zeroToSixty: "3.5s",
+                topSpeed: "180 mph",
+                mileage: "15 mi",
+                color: "Destroyer Grey",
+                hexColor: "#5e6368",
+                image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80"
+                ],
+                desc: "SUV de tres filas con capacidad de remolque de 8,700 lbs y tracción AWD permanente con distribución de torque variable SRT."
+            },
+            {
+                id: "hellcat-04",
+                name: "Challenger SRT Jailbreak Last Call",
+                category: "Jailbreak",
+                year: 2023,
+                price: 118000,
+                badge: "Last Call Rare",
+                badgeColor: "bg-purple-600",
+                hp: 807,
+                torque: "707 lb-ft",
+                zeroToSixty: "3.1s",
+                topSpeed: "203 mph",
+                mileage: "50 mi",
+                color: "Plum Crazy",
+                hexColor: "#612585",
+                image: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=800&q=80"
+                ],
+                desc: "Unidad de colección Last Call con placa conmemorativa bajo el cofre, rines de carbón satinado y asientos de piel Laguna exclusivos."
+            },
+            {
+                id: "hellcat-05",
+                name: "Dodge Charger SRT Hellcat Redeye Widebody",
+                category: "Charger",
+                year: 2022,
+                price: 89000,
+                badge: "Certificado",
+                badgeColor: "bg-blue-600",
+                hp: 797,
+                torque: "707 lb-ft",
+                zeroToSixty: "3.4s",
+                topSpeed: "203 mph",
+                mileage: "8,900 mi",
+                color: "F8 Green",
+                hexColor: "#2c3e2e",
+                image: "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80"
+                ],
+                desc: "Cofre con doble toma de aire funcional, enfriador SRT Power Chiller® y sistema audio Harman Kardon® de 19 bocinas."
+            },
+            {
+                id: "hellcat-06",
+                name: "Dodge Challenger SRT Hellcat Widebody",
+                category: "Challenger",
+                year: 2022,
+                price: 84500,
+                badge: "Oportunidad VIP",
+                badgeColor: "bg-emerald-600",
+                hp: 717,
+                torque: "656 lb-ft",
+                zeroToSixty: "3.7s",
+                topSpeed: "199 mph",
+                mileage: "11,200 mi",
+                color: "White Knuckle",
+                hexColor: "#e8e8e8",
+                image: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80",
+                gallery: [
+                    "https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80"
+                ],
+                desc: "Llantas 305/35ZR20 Performance en las cuatro esquinas, transmisión manual Tremec de 6 velocidades de alta resistencia."
+            }
+        ];
+
+        // INITIALIZATION
+        document.addEventListener('DOMContentLoaded', () => {
+            renderInventory(inventoryData);
+            initFilterListeners();
+            initCalculatorListeners();
+            populateComparisonSelectors();
+            renderComparisonTable();
+            initEngineAudio();
+
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+                const menu = document.getElementById('mobileMenu');
+                menu.classList.toggle('hidden');
+            });
+        });
+
+        // RENDER INVENTORY GRID
+        function renderInventory(cars) {
+            const container = document.getElementById('carsGrid');
+            container.innerHTML = '';
+
+            if(cars.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-gray-400">
+                        <i class="fa-solid fa-car-tunnel text-4xl mb-3 text-srtRed"></i>
+                        <p class="font-bold">No se encontraron vehículos Hellcat con los filtros seleccionados.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cars.forEach(car => {
+                const card = document.createElement('div');
+                card.className = 'bg-srtCard border border-srtBorder rounded-2xl overflow-hidden hover:border-srtRed/60 transition group flex flex-col justify-between shadow-xl';
+                card.innerHTML = `
+                    <div>
+                        <div class="relative h-56 overflow-hidden">
+                            <img src="${car.image}" alt="${car.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <span class="absolute top-3 left-3 ${car.badgeColor} text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-md tracking-wider">
+                                ${car.badge}
+                            </span>
+                            <div class="absolute bottom-3 right-3 bg-black/80 backdrop-blur text-srtRed font-display font-black text-xl px-3 py-1 rounded-lg border border-srtRed/30">
+                                $${car.price.toLocaleString()}
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <div class="text-xs text-gray-400 font-bold uppercase mb-1">${car.year} &bull; ${car.mileage}</div>
+                            <h3 class="font-display text-lg font-bold text-white group-hover:text-srtRed transition">${car.name}</h3>
+                            
+                            <!-- Specs Badges -->
+                            <div class="grid grid-cols-3 gap-2 my-4 pt-4 border-t border-srtBorder/60 text-center">
+                                <div class="bg-srtDark p-2 rounded-lg">
+                                    <div class="text-xs text-gray-400">Potencia</div>
+                                    <div class="text-sm font-extrabold text-white">${car.hp} HP</div>
+                                </div>
+                                <div class="bg-srtDark p-2 rounded-lg">
+                                    <div class="text-xs text-gray-400">0-60mph</div>
+                                    <div class="text-sm font-extrabold text-white">${car.zeroToSixty}</div>
+                                </div>
+                                <div class="bg-srtDark p-2 rounded-lg">
+                                    <div class="text-xs text-gray-400">V. Máxima</div>
+                                    <div class="text-sm font-extrabold text-white">${car.topSpeed}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="px-6 pb-6 pt-0 flex space-x-3">
+                        <button onclick="openDetailsModal('${car.id}')" class="flex-1 bg-srtGray hover:bg-srtBorder text-white text-xs font-bold py-3 rounded-lg border border-srtBorder transition uppercase tracking-wider">
+                            Ver Detalles
+                        </button>
+                        <button onclick="openBookingModal('${car.name}')" class="flex-1 bg-srtRed hover:bg-srtRedDark text-white text-xs font-bold py-3 rounded-lg transition shadow-md shadow-srtRed/30 uppercase tracking-wider">
+                            Cotizar
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // FILTER LISTENERS
+        function initFilterListeners() {
+            const searchInput = document.getElementById('searchInput');
+            const modelFilter = document.getElementById('modelFilter');
+            const priceFilter = document.getElementById('priceFilter');
+            const resetBtn = document.getElementById('resetFiltersBtn');
+
+            const filterData = () => {
+                const search = searchInput.value.toLowerCase();
+                const model = modelFilter.value;
+                const maxPrice = priceFilter.value;
+
+                const filtered = inventoryData.filter(car => {
+                    const matchesSearch = car.name.toLowerCase().includes(search) || car.desc.toLowerCase().includes(search);
+                    const matchesModel = model === 'ALL' || car.category === model;
+                    const matchesPrice = maxPrice === 'ALL' || car.price <= parseInt(maxPrice);
+                    return matchesSearch && matchesModel && matchesPrice;
+                });
+
+                renderInventory(filtered);
+            };
+
+            searchInput.addEventListener('input', filterData);
+            modelFilter.addEventListener('change', filterData);
+            priceFilter.addEventListener('change', filterData);
+
+            resetBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                modelFilter.value = 'ALL';
+                priceFilter.value = 'ALL';
+                renderInventory(inventoryData);
+            });
+        }
+
+        // VEHICLE DETAILS MODAL
+        function openDetailsModal(carId) {
+            const car = inventoryData.find(c => c.id === carId);
+            if(!car) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <div class="rounded-xl overflow-hidden border border-srtBorder h-64 sm:h-80 mb-4">
+                            <img id="modalMainImg" src="${car.image}" alt="${car.name}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="flex space-x-3 overflow-x-auto pb-2">
+                            ${car.gallery.map(img => `
+                                <img src="${img}" onclick="document.getElementById('modalMainImg').src='${img}'" 
+                                     class="w-20 h-16 object-cover rounded-lg border border-srtBorder cursor-pointer hover:border-srtRed">
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="${car.badgeColor} text-white text-xs font-black uppercase px-2.5 py-1 rounded">
+                                ${car.badge}
+                            </span>
+                            <span class="text-xs text-gray-400 font-bold uppercase">Año ${car.year}</span>
+                        </div>
+
+                        <h3 class="font-display text-2xl font-black text-white">${car.name}</h3>
+                        <div class="font-display text-3xl font-black text-srtRed">$${car.price.toLocaleString()}</div>
+
+                        <p class="text-gray-300 text-sm leading-relaxed">${car.desc}</p>
+
+                        <!-- Tech Specs Table -->
+                        <div class="bg-srtDark rounded-xl p-4 border border-srtBorder space-y-2 text-sm">
+                            <div class="flex justify-between py-1 border-b border-srtBorder/50">
+                                <span class="text-gray-400">Potencia de Motor</span>
+                                <span class="text-white font-bold">${car.hp} HP @ 6,000 RPM</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-srtBorder/50">
+                                <span class="text-gray-400">Torque</span>
+                                <span class="text-white font-bold">${car.torque}</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-srtBorder/50">
+                                <span class="text-gray-400">Aceleración 0-60 mph</span>
+                                <span class="text-white font-bold">${car.zeroToSixty}</span>
+                            </div>
+                            <div class="flex justify-between py-1 border-b border-srtBorder/50">
+                                <span class="text-gray-400">Velocidad Máxima</span>
+                                <span class="text-white font-bold">${car.topSpeed}</span>
+                            </div>
+                            <div class="flex justify-between py-1">
+                                <span class="text-gray-400">Color Exterior</span>
+                                <span class="text-white font-bold flex items-center gap-2">
+                                    <span class="w-3 h-3 rounded-full inline-block border border-gray-500" style="background-color: ${car.hexColor}"></span>
+                                    ${car.color}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex flex-col sm:flex-row gap-3">
+                            <button onclick="closeDetailsModal(); openBookingModal('${car.name}')" class="flex-1 bg-srtRed hover:bg-srtRedDark text-white font-bold py-3.5 rounded-xl transition text-sm uppercase tracking-wider">
+                                Agendar Prueba para este Auto
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('detailsModal').classList.remove('hidden');
+        }
+
+        function closeDetailsModal() {
+            document.getElementById('detailsModal').classList.add('hidden');
+        }
+
+        // BOOKING MODAL
+        function openBookingModal(carName) {
+            if(carName && carName !== 'General' && carName !== 'Prueba de Manejo') {
+                document.getElementById('bookingSubtext').innerText = `Vehículo seleccionado: ${carName}`;
+            } else {
+                document.getElementById('bookingSubtext').innerText = 'Reserva tu espacio exclusivo con Yaziel Hellcat';
+            }
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            closeBookingModal();
+            showToast('¡Cita solicitada exitosamente! Te contactaremos a la brevedad.');
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            e.target.reset();
+            showToast('¡Solicitud VIP recibida! Un especialista SRT te responderá pronto.');
+        }
+
+        // FINANCIAL CALCULATOR
+        function initCalculatorListeners() {
+            const calcPrice = document.getElementById('calcPrice');
+            const calcDown = document.getElementById('calcDown');
+            const calcTerm = document.getElementById('calcTerm');
+            const calcRate = document.getElementById('calcRate');
+
+            const calculate = () => {
+                const P = Math.max(0, parseFloat(calcPrice.value) || 0 - parseFloat(calcDown.value) || 0);
+                const financed = Math.max(0, (parseFloat(calcPrice.value) || 0) - (parseFloat(calcDown.value) || 0));
+                const r = ((parseFloat(calcRate.value) || 0) / 100) / 12;
+                const n = parseInt(calcTerm.value) || 60;
+
+                let monthly = 0;
+                if (r > 0) {
+                    monthly = (financed * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+                } else {
+                    monthly = financed / n;
+                }
+
+                document.getElementById('calcMonthlyOutput').innerText = `$${Math.round(monthly).toLocaleString()}`;
+                document.getElementById('calcFinancedOutput').innerText = `$${financed.toLocaleString()}`;
+            };
+
+            [calcPrice, calcDown, calcTerm, calcRate].forEach(el => el.addEventListener('input', calculate));
+            calculate();
+        }
+
+        function applyFinancingWithCalc() {
+            const price = document.getElementById('calcPrice').value;
+            openBookingModal(`Financiamiento para auto de $${price}`);
+        }
+
+        // MODEL COMPARISON TOOL
+        function populateComparisonSelectors() {
+            const sel1 = document.getElementById('compVehicle1');
+            const sel2 = document.getElementById('compVehicle2');
+
+            inventoryData.forEach((car, index) => {
+                const opt1 = new Option(car.name, car.id, false, index === 0);
+                const opt2 = new Option(car.name, car.id, false, index === 1);
+                sel1.add(opt1);
+                sel2.add(opt2);
+            });
+
+            sel1.addEventListener('change', renderComparisonTable);
+            sel2.addEventListener('change', renderComparisonTable);
+        }
+
+        function renderComparisonTable() {
+            const id1 = document.getElementById('compVehicle1').value;
+            const id2 = document.getElementById('compVehicle2').value;
+
+            const car1 = inventoryData.find(c => c.id === id1) || inventoryData[0];
+            const car2 = inventoryData.find(c => c.id === id2) || inventoryData[1];
+
+            const container = document.getElementById('comparisonContainer');
+            container.innerHTML = `
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="border-b border-srtBorder bg-black/40">
+                            <th class="p-4 text-gray-400 font-bold uppercase">Característica</th>
+                            <th class="p-4 text-srtRed font-display font-black text-base">${car1.name}</th>
+                            <th class="p-4 text-srtRed font-display font-black text-base">${car2.name}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-srtBorder/50">
+                        <tr>
+                            <td class="p-4 text-gray-400 font-semibold">Precio Base</td>
+                            <td class="p-4 font-bold text-white">$${car1.price.toLocaleString()}</td>
+                            <td class="p-4 font-bold text-white">$${car2.price.toLocaleString()}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 text-gray-400 font-semibold">Caballos de Fuerza (HP)</td>
+                            <td class="p-4 font-bold text-white">${car1.hp} HP</td>
+                            <td class="p-4 font-bold text-white">${car2.hp} HP</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 text-gray-400 font-semibold">Torque</td>
+                            <td class="p-4 text-white">${car1.torque}</td>
+                            <td class="p-4 text-white">${car2.torque}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 text-gray-400 font-semibold">Aceleración (0-60 mph)</td>
+                            <td class="p-4 font-bold ${parseFloat(car1.zeroToSixty) <= parseFloat(car2.zeroToSixty) ? 'text-green-400' : 'text-white'}">${car1.zeroToSixty}</td>
+                            <td class="p-4 font-bold ${parseFloat(car2.zeroToSixty) <= parseFloat(car1.zeroToSixty) ? 'text-green-400' : 'text-white'}">${car2.zeroToSixty}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 text-gray-400 font-semibold">Velocidad Máxima</td>
+                            <td class="p-4 text-white">${car1.topSpeed}</td>
+                            <td class="p-4 text-white">${car2.topSpeed}</td>
+                        </tr>
+                        <tr>
+                            <td class="p-4 text-gray-400 font-semibold">Categoría / Carrocería</td>
+                            <td class="p-4 text-gray-300">${car1.category}</td>
+                            <td class="p-4 text-gray-300">${car2.category}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // ENGINE AUDIO SIMULATOR (TONE.JS SYNTHESIS)
+        let synth, filter, isAudioInit = false;
+
+        function initEngineAudio() {
+            const btn = document.getElementById('revEngineBtn');
+            btn.addEventListener('click', async () => {
+                try {
+                    if (!isAudioInit) {
+                        await Tone.start();
+                        filter = new Tone.Filter(300, "lowpass").toDestination();
+                        synth = new Tone.Oscillator({
+                            frequency: 60,
+                            type: "sawtooth"
+                        }).connect(filter);
+                        synth.start();
+                        synth.volume.value = -12;
+                        isAudioInit = true;
+                    }
+
+                    // Rev sequence simulation
+                    btn.innerHTML = `<i class="fa-solid fa-fire animate-bounce"></i> <span>¡RUGIENDO!</span>`;
+                    
+                    synth.frequency.rampTo(280, 0.4);
+                    filter.frequency.rampTo(1200, 0.4);
+
+                    setTimeout(() => {
+                        synth.frequency.rampTo(60, 0.8);
+                        filter.frequency.rampTo(300, 0.8);
+                        setTimeout(() => {
+                            btn.innerHTML = `<i class="fa-solid fa-gauge-high"></i> <span>Acelerar Motor</span>`;
+                        }, 800);
+                    }, 600);
+
+                } catch(e) {
+                    showToast('Audio activado. ¡Siente la potencia SRT!');
+                }
+            });
+        }
+
+        // TOAST HELPER
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
